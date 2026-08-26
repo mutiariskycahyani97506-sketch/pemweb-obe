@@ -60,3 +60,7 @@ Proyek ini merupakan repository awal untuk kegiatan Praktikum Pemrograman Web ya
 
 http://localhost/pemweb-obe/
 
+
+
+## Pengembangan
+Proyek dikembangkan secara incremental sesuai kebutuhan praktikum.
