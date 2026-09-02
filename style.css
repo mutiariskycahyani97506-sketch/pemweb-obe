@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header,
+main,
+footer {
+    padding: 20px;
+}
+
+nav a {
+    margin-right: 15px;
+}
+
+img {
+    max-width: 300px;
+    height: auto;
+}
+
+form {
+    max-width: 400px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 8px 15px;
+    cursor: pointer;
+}
