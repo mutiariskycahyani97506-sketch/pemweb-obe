@@ -64,3 +64,38 @@ http://localhost/pemweb-obe/
 
 ## Pengembangan
 Proyek dikembangkan secara incremental sesuai kebutuhan praktikum.
+
+## Hasil Praktikum Struktur HTML5
+
+Pada praktikum ini, halaman web dikembangkan menggunakan elemen HTML5 semantik.
+
+Struktur yang diterapkan meliputi:
+
+- `header`
+- `nav`
+- `main`
+- `section`
+- `article`
+- `footer`
+
+Halaman juga dilengkapi dengan:
+
+- Navigasi internal menggunakan anchor link
+- Hierarki heading `h1`, `h2`, dan `h3`
+- Gambar dengan teks alternatif (`alt`) yang deskriptif
+- Form kontak dengan `label` yang terhubung ke input
+- Pengujian navigasi menggunakan keyboard dengan tombol Tab
+
+## Fitur Halaman
+
+Halaman praktikum dapat diakses melalui:
+
+`http://localhost/pemweb-obe/`
+
+Fitur yang tersedia:
+
+1. Informasi tentang praktikum
+2. Materi mengenai struktur HTML5
+3. Gambar ilustrasi dengan alt text
+4. Form kontak
+5. Navigasi menggunakan keyboard
