@@ -1,89 +1,367 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Praktikum Pemrograman Web</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIRA-KONTRAK | Sistem Informasi & Reservasi Kontrakan</title>
+
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Praktikum Pemrograman Web</h1>
-        <p>Halaman praktikum struktur HTML5.</p>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
 
-        <nav>
-            <a href="#tentang">Tentang</a>
-            <a href="#materi">Materi</a>
-            <a href="#kontak">Kontak</a>
-        </nav>
+            <div class="logo">
+                <h1>SIRA-KONTRAK</h1>
+                <span>Sistem Informasi & Reservasi Kontrakan</span>
+            </div>
+
+            <nav>
+                <a href="#beranda">Beranda</a>
+                <a href="#kamar">Kamar</a>
+                <a href="#fasilitas">Fasilitas</a>
+                <a href="#kontak">Kontak</a>
+            </nav>
+
+        </div>
     </header>
 
-    <main>
 
-        <section id="tentang">
-            <h2>Tentang Praktikum</h2>
-            <p>
-                Praktikum Pemrograman Web membantu mahasiswa memahami
-                dasar-dasar pengembangan website.
-            </p>
-        </section>
+    <!-- HERO -->
+    <section id="beranda" class="hero">
 
-        <section id="materi">
-            <h2>Materi Praktikum</h2>
+        <div class="hero-content container">
 
-            <article>
-                <h3>Struktur HTML5</h3>
+            <div class="hero-text">
+                <p class="hero-label">SELAMAT DATANG DI SIRA-KONTRAK</p>
+
+                <h2>
+                    Temukan Hunian Nyaman
+                    <span>Untuk Anda</span>
+                </h2>
+
                 <p>
-                    HTML5 menyediakan elemen semantik untuk membuat
-                    struktur halaman web lebih jelas dan terorganisir.
+                    Cari kontrakan dengan mudah melalui informasi
+                    kamar, harga, fasilitas, dan status ketersediaan
+                    yang dapat diakses dalam satu platform.
                 </p>
 
-                <img src="images/html5.jpg"
-     alt="Ilustrasi struktur dan pengembangan halaman web menggunakan HTML5">
+                <a href="#kamar" class="btn">
+                    Lihat Kamar
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INFORMATION CARDS -->
+    <section class="info-section">
+
+        <div class="container info-cards">
+
+            <article class="info-card">
+                <div class="info-icon">🏠</div>
+                <h3>Kamar Nyaman</h3>
+                <p>
+                    Pilihan kamar dengan informasi fasilitas
+                    yang jelas dan lengkap.
+                </p>
             </article>
+
+            <article class="info-card">
+                <div class="info-icon">💰</div>
+                <h3>Harga Terjangkau</h3>
+                <p>
+                    Informasi harga sewa ditampilkan secara
+                    transparan untuk calon penyewa.
+                </p>
+            </article>
+
+            <article class="info-card">
+                <div class="info-icon">🔑</div>
+                <h3>Reservasi Mudah</h3>
+                <p>
+                    Temukan kamar yang tersedia dan hubungi
+                    admin untuk melakukan reservasi.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- KAMAR -->
+    <main>
+
+        <section id="kamar" class="section container">
+
+            <div class="section-heading">
+                <p class="section-label">PILIHAN HUNIAN</p>
+                <h2>Kamar yang Tersedia</h2>
+                <p>
+                    Pilih kamar sesuai kebutuhan dan budget Anda.
+                </p>
+            </div>
+
+
+            <div class="cards">
+
+                <!-- KAMAR 1 -->
+                <article class="card">
+
+                    <div class="card-image">
+                       <img src="images/kamar-a01.jpeg" alt="Kamar A01 SIRA-KONTRAK">
+
+                        <span class="status available">
+                            Kosong
+                        </span>
+                    </div>
+
+                    <div class="card-content">
+
+                        <h3>Kamar A01</h3>
+
+                        <p class="price">
+                            Rp1.000.000
+                            <span>/ bulan</span>
+                        </p>
+
+                        <p>
+                            Kamar nyaman dengan fasilitas dasar
+                            untuk kebutuhan sehari-hari.
+                        </p>
+
+                        <ul>
+                            <li>✓ Kamar tidur</li>
+                            <li>✓ Kamar mandi</li>
+                            <li>✓ Listrik</li>
+                        </ul>
+
+                        <a href="#kontak" class="card-button">
+                            Reservasi
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- KAMAR 2 -->
+                <article class="card">
+
+                    <div class="card-image">
+                        <img src="images/kamar-a02.jpeg" alt="Kamar A02 SIRA-KONTRAK">
+
+                        <span class="status occupied">
+                            Terisi
+                        </span>
+                    </div>
+
+                    <div class="card-content">
+
+                        <h3>Kamar A02</h3>
+
+                        <p class="price">
+                            Rp1.200.000
+                            <span>/ bulan</span>
+                        </p>
+
+                        <p>
+                            Kamar dengan fasilitas tambahan untuk
+                            kenyamanan penyewa.
+                        </p>
+
+                        <ul>
+                            <li>✓ Kamar tidur</li>
+                            <li>✓ Kamar mandi</li>
+                            <li>✓ WiFi</li>
+                        </ul>
+
+                        <a href="#kontak" class="card-button">
+                            Hubungi Admin
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- KAMAR 3 -->
+                <article class="card">
+
+                    <div class="card-image">
+                        <img src="images/kamar-a03.jpeg" alt="Kamar A03 SIRA-KONTRAK">
+
+                        <span class="status available">
+                            Kosong
+                        </span>
+                    </div>
+
+                    <div class="card-content">
+
+                        <h3>Kamar A03</h3>
+
+                        <p class="price">
+                            Rp1.300.000
+                            <span>/ bulan</span>
+                        </p>
+
+                        <p>
+                            Kamar dengan fasilitas lengkap dan
+                            cocok untuk hunian yang nyaman.
+                        </p>
+
+                        <ul>
+                            <li>✓ Kamar tidur</li>
+                            <li>✓ Kamar mandi</li>
+                            <li>✓ WiFi & Listrik</li>
+                        </ul>
+
+                        <a href="#kontak" class="card-button">
+                            Reservasi
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
 
         </section>
 
-        <section id="kontak">
-    <h2>Kontak</h2>
 
-    <p>
-        Silakan gunakan form berikut untuk mengirim pesan.
-    </p>
+        <!-- FASILITAS -->
+        <section id="fasilitas" class="section facility-section">
 
-    <form>
-        <div>
-            <label for="nama">Nama</label>
-            <input type="text" id="nama" name="nama" required>
-        </div>
+            <div class="container">
 
-        <br>
+                <div class="section-heading">
+                    <p class="section-label">KENYAMANAN ANDA</p>
+                    <h2>Fasilitas Kontrakan</h2>
+                </div>
 
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-        </div>
+                <div class="facility-grid">
 
-        <br>
+                    <div class="facility-item">
+                        <span>🛏️</span>
+                        <h3>Kamar Nyaman</h3>
+                        <p>Ruang yang nyaman untuk beristirahat.</p>
+                    </div>
 
-        <div>
-            <label for="pesan">Pesan</label>
-            <textarea id="pesan" name="pesan" rows="4" required></textarea>
-        </div>
+                    <div class="facility-item">
+                        <span>🚿</span>
+                        <h3>Kamar Mandi</h3>
+                        <p>Kamar mandi untuk kebutuhan sehari-hari.</p>
+                    </div>
 
-        <br>
+                    <div class="facility-item">
+                        <span>📶</span>
+                        <h3>WiFi</h3>
+                        <p>Akses internet untuk kebutuhan penyewa.</p>
+                    </div>
 
-        <button type="submit">Kirim Pesan</button>
-    </form>
-</section>
+                    <div class="facility-item">
+                        <span>⚡</span>
+                        <h3>Listrik</h3>
+                        <p>Fasilitas listrik untuk menunjang aktivitas.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- KONTAK -->
+        <section id="kontak" class="section container contact-section">
+
+            <div class="contact-box">
+
+                <div>
+                    <p class="section-label">TERTARIK MENYEWA?</p>
+
+                    <h2>
+                        Hubungi Admin SIRA-KONTRAK
+                    </h2>
+
+                    <p>
+                        Silakan isi formulir untuk mendapatkan
+                        informasi lebih lanjut mengenai kamar
+                        dan proses reservasi.
+                    </p>
+                </div>
+
+
+                <form>
+
+                    <label for="nama">Nama</label>
+                    <input
+                        type="text"
+                        id="nama"
+                        name="nama"
+                        placeholder="Masukkan nama Anda"
+                        required
+                    >
+
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Masukkan email Anda"
+                        required
+                    >
+
+                    <label for="pesan">Pesan</label>
+                    <textarea
+                        id="pesan"
+                        name="pesan"
+                        rows="4"
+                        placeholder="Tulis pesan atau kamar yang ingin ditanyakan"
+                        required
+                    ></textarea>
+
+                    <button type="submit">
+                        Kirim Pesan
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
 
     </main>
 
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Praktikum Pemrograman Web</p>
+
+        <div class="container">
+
+            <h3>SIRA-KONTRAK</h3>
+
+            <p>
+                Sistem Informasi & Reservasi Kontrakan
+            </p>
+
+            <p class="copyright">
+                &copy; 2026 SIRA-KONTRAK. All Rights Reserved.
+            </p>
+
+        </div>
+
     </footer>
 
 </body>
+
 </html>
