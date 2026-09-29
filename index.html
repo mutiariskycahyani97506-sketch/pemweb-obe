@@ -28,6 +28,9 @@
                 <a href="#kontak">Kontak</a>
             </nav>
 
+            <!-- D.5 & D.6 MODUL 5: Tombol Ganti Tema -->
+            <button id="theme-button" type="button" style="padding: 6px 12px; cursor: pointer; margin-left: 10px;">Ganti Tema</button>
+
         </div>
     </header>
 
@@ -99,143 +102,37 @@
 
 
     <!-- KAMAR -->
-    <main>
+    <section id="kamar" class="section container">
+        <div class="section-heading">
+            <p class="section-label">PILIHAN HUNIAN</p>
+            <h2>Cari Kamar Kontrakan</h2>
+            <p>Gunakan filter atau pencarian untuk menemukan kamar yang sesuai.</p>
+        </div>
 
-        <section id="kamar" class="section container">
-
-            <div class="section-heading">
-                <p class="section-label">PILIHAN HUNIAN</p>
-                <h2>Kamar yang Tersedia</h2>
-                <p>
-                    Pilih kamar sesuai kebutuhan dan budget Anda.
-                </p>
+        <div class="room-controls">
+            <div class="filter-buttons" role="group" aria-label="Filter status kamar">
+                <button class="filter-button" data-filter="Semua" type="button" aria-pressed="true">Semua</button>
+                <button class="filter-button" data-filter="Tersedia" type="button" aria-pressed="false">Tersedia</button>
+                <button class="filter-button" data-filter="Disewa" type="button" aria-pressed="false">Disewa</button>
             </div>
 
-
-            <div class="cards">
-
-                <!-- KAMAR 1 -->
-                <article class="card">
-
-                    <div class="card-image">
-                       <img src="images/kamar-a01.jpeg" alt="Kamar A01 SIRA-KONTRAK">
-
-                        <span class="status available">
-                            Kosong
-                        </span>
-                    </div>
-
-                    <div class="card-content">
-
-                        <h3>Kamar A01</h3>
-
-                        <p class="price">
-                            Rp1.000.000
-                            <span>/ bulan</span>
-                        </p>
-
-                        <p>
-                            Kamar nyaman dengan fasilitas dasar
-                            untuk kebutuhan sehari-hari.
-                        </p>
-
-                        <ul>
-                            <li>✓ Kamar tidur</li>
-                            <li>✓ Kamar mandi</li>
-                            <li>✓ Listrik</li>
-                        </ul>
-
-                        <a href="#kontak" class="card-button">
-                            Reservasi
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- KAMAR 2 -->
-                <article class="card">
-
-                    <div class="card-image">
-                        <img src="images/kamar-a02.jpeg" alt="Kamar A02 SIRA-KONTRAK">
-
-                        <span class="status occupied">
-                            Terisi
-                        </span>
-                    </div>
-
-                    <div class="card-content">
-
-                        <h3>Kamar A02</h3>
-
-                        <p class="price">
-                            Rp1.200.000
-                            <span>/ bulan</span>
-                        </p>
-
-                        <p>
-                            Kamar dengan fasilitas tambahan untuk
-                            kenyamanan penyewa.
-                        </p>
-
-                        <ul>
-                            <li>✓ Kamar tidur</li>
-                            <li>✓ Kamar mandi</li>
-                            <li>✓ WiFi</li>
-                        </ul>
-
-                        <a href="#kontak" class="card-button">
-                            Hubungi Admin
-                        </a>
-
-                    </div>
-
-                </article>
-
-
-                <!-- KAMAR 3 -->
-                <article class="card">
-
-                    <div class="card-image">
-                        <img src="images/kamar-a03.jpeg" alt="Kamar A03 SIRA-KONTRAK">
-
-                        <span class="status available">
-                            Kosong
-                        </span>
-                    </div>
-
-                    <div class="card-content">
-
-                        <h3>Kamar A03</h3>
-
-                        <p class="price">
-                            Rp1.300.000
-                            <span>/ bulan</span>
-                        </p>
-
-                        <p>
-                            Kamar dengan fasilitas lengkap dan
-                            cocok untuk hunian yang nyaman.
-                        </p>
-
-                        <ul>
-                            <li>✓ Kamar tidur</li>
-                            <li>✓ Kamar mandi</li>
-                            <li>✓ WiFi & Listrik</li>
-                        </ul>
-
-                        <a href="#kontak" class="card-button">
-                            Reservasi
-                        </a>
-
-                    </div>
-
-                </article>
-
+            <div class="room-control">
+                <label for="search-input">Cari nama kamar</label>
+                <input type="search" id="search-input" placeholder="Contoh: Kamar A01">
             </div>
 
-        </section>
+            <div class="room-control">
+                <label for="limit-select">Jumlah kamar</label>
+                <select id="limit-select">
+                    <option value="5">5 kamar</option>
+                    <option value="10">10 kamar</option>
+                    <option value="20">20 kamar</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="daftar-kamar" class="cards" aria-live="polite"></div>
+    </section>
 
 
         <!-- FASILITAS -->

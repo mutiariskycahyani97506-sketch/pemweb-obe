@@ -1,64 +1,151 @@
-import { ringkasInventaris } from './utils.js';
-
 import { dataKontrakan } from './siraData.js';
-import {
-  getKamarTersedia,
-  getNamaKamar,
-  getTotalHarga,
-  cariKamarById,
-  buatRingkasanKamar
-} from './siraUtils.js';
 
-const inventaris = [
-  { id: 1, nama: 'Router', kategori: 'Jaringan', jumlah: 4, kondisi: 'Baik', lokasi: 'Lab Jaringan' },
-  { id: 2, nama: 'Multimeter', kategori: 'Elektronika', jumlah: 6, kondisi: 'Baik', lokasi: 'Lab Elektronika' },
-  { id: 3, nama: 'Kabel UTP', kategori: 'Jaringan', jumlah: 20, kondisi: 'Perlu Cek', lokasi: 'Lab Jaringan' }
-];
+const daftarKamar = document.querySelector('#daftar-kamar');
+const tombolFilter = document.querySelectorAll('[data-filter]');
+const searchInput = document.querySelector('#search-input');
+const limitSelect = document.querySelector('#limit-select');
+const themeButton = document.querySelector('#theme-button');
 
-const alatBaik = inventaris.filter(item => item.kondisi === 'Baik');
+const gambarKamar = {
+  'Kamar A01': 'images/kamar-a01.jpeg',
+  'Kamar A02': 'images/kamar-a02.jpeg',
+  'Kamar B01': 'images/hero-kontrakan.jpeg',
+  'Kamar B02': 'images/hero-kontrakan.jpeg'
+};
 
-const alatLabJaringan = inventaris.filter(item => item.lokasi === 'Lab Jaringan');
+let filterStatus = 'Semua';
+let kataKunci = '';
+const limitTersimpan = Number(localStorage.getItem('limit'));
+let limitTampil = [5, 10, 20].includes(limitTersimpan) ? limitTersimpan : 5;
 
-const namaAlat = inventaris.map(({ nama }) => nama);
-
-const totalUnit = inventaris.reduce((total, item) => total + item.jumlah, 0);
-
-console.table(alatBaik);
-
-console.log(namaAlat);
-
-console.log(ringkasInventaris(inventaris));
-console.log(alatLabJaringan);
-
-function cariAlatById(data, id) {
-  return data.find(item => item.id === id);
+if (limitSelect) {
+  limitSelect.value = String(limitTampil);
 }
-console.log(cariAlatById(inventaris, 2));
 
+function renderItems(kamar) {
+  if (!daftarKamar) return;
 
-const ringkasanAlat = inventaris.map(({ nama, kategori, jumlah, lokasi }) =>
-  `${nama} - ${kategori} - ${jumlah} unit - ${lokasi}`
-);
+  daftarKamar.replaceChildren();
 
-console.log(ringkasanAlat);
-
-console.log('=== SIRA-KONTRAK ===');
-
-try {
-  const kamarTersedia = getKamarTersedia(dataKontrakan);
-  const namaKamar = getNamaKamar(dataKontrakan);
-  const totalHarga = getTotalHarga(dataKontrakan);
-  const kamarDitemukan = cariKamarById(dataKontrakan, 3);
-
-  console.table(kamarTersedia);
-  console.log('Nama kamar:', namaKamar);
-  console.log('Total harga kamar:', totalHarga);
-  console.log('Kamar dengan ID 3:', kamarDitemukan);
-
-  console.log(
-    'Ringkasan:',
-    dataKontrakan.map(kamar => buatRingkasanKamar(kamar))
+  const hasilCari = kamar.filter(item =>
+    item.nama.toLowerCase().includes(kataKunci.trim().toLowerCase())
   );
-} catch (error) {
-  console.error('Gagal mengolah data SIRA-KONTRAK:', error.message);
+  const kamarDitampilkan = hasilCari.slice(0, limitTampil);
+
+  if (kamarDitampilkan.length === 0) {
+    const pesanKosong = document.createElement('p');
+    pesanKosong.className = 'empty-state';
+    pesanKosong.textContent = 'Kamar tidak ditemukan. Coba kata kunci atau filter lain.';
+    daftarKamar.append(pesanKosong);
+    return;
+  }
+
+  for (const item of kamarDitampilkan) {
+    const card = document.createElement('article');
+    card.className = 'card';
+
+    const areaGambar = document.createElement('div');
+    areaGambar.className = 'card-image';
+
+    const gambar = document.createElement('img');
+    gambar.src = gambarKamar[item.nama] ?? 'images/hero-kontrakan.jpeg';
+    gambar.alt = item.nama + ' di SIRA-KONTRAK';
+
+    const status = document.createElement('span');
+    status.className = `status ${item.status === 'Tersedia' ? 'available' : 'occupied'}`;
+    status.textContent = item.status;
+    areaGambar.append(gambar, status);
+
+    const isiCard = document.createElement('div');
+    isiCard.className = 'card-content';
+
+    const nama = document.createElement('h3');
+    nama.textContent = item.nama;
+
+    const harga = document.createElement('p');
+    harga.className = 'price';
+    harga.textContent = `Rp${item.harga.toLocaleString('id-ID')} `;
+    const satuan = document.createElement('span');
+    satuan.textContent = '/ bulan';
+    harga.append(satuan);
+
+    const tipe = document.createElement('p');
+    tipe.textContent = `Tipe kamar: ${item.tipe}`;
+
+    const daftarFasilitas = document.createElement('ul');
+    for (const fasilitas of item.fasilitas) {
+      const barisFasilitas = document.createElement('li');
+      barisFasilitas.textContent = `✓ ${fasilitas}`;
+      daftarFasilitas.append(barisFasilitas);
+    }
+
+    const tombolDetail = document.createElement('button');
+    tombolDetail.className = 'card-button room-detail-button';
+    tombolDetail.type = 'button';
+    tombolDetail.textContent = 'Detail Kamar';
+    tombolDetail.dataset.detailId = item.id;
+
+    isiCard.append(nama, harga, tipe, daftarFasilitas, tombolDetail);
+    card.append(areaGambar, isiCard);
+    daftarKamar.append(card);
+  }
 }
+
+function updateTampilan() {
+  const hasilFilter = filterStatus === 'Semua'
+    ? dataKontrakan
+    : dataKontrakan.filter(item => item.status === filterStatus);
+  renderItems(hasilFilter);
+}
+
+tombolFilter.forEach(button => {
+  button.addEventListener('click', () => {
+    filterStatus = button.dataset.filter;
+    tombolFilter.forEach(tombol => {
+      tombol.setAttribute('aria-pressed', String(tombol === button));
+    });
+    updateTampilan();
+  });
+});
+
+if (searchInput) {
+  searchInput.addEventListener('input', event => {
+    kataKunci = event.target.value;
+    updateTampilan();
+  });
+}
+
+if (limitSelect) {
+  limitSelect.addEventListener('change', event => {
+    limitTampil = Number(event.target.value);
+    localStorage.setItem('limit', String(limitTampil));
+    updateTampilan();
+  });
+}
+
+if (daftarKamar) {
+  daftarKamar.addEventListener('click', event => {
+    const tombol = event.target.closest('[data-detail-id]');
+    if (!tombol) return;
+
+    const kamar = dataKontrakan.find(item => item.id === Number(tombol.dataset.detailId));
+    if (!kamar) return;
+
+    alert(
+      `DETAIL KAMAR\nNama: ${kamar.nama}\nTipe: ${kamar.tipe}\nHarga: Rp${kamar.harga.toLocaleString('id-ID')} per bulan\nStatus: ${kamar.status}\nFasilitas: ${kamar.fasilitas.join(', ')}`
+    );
+  });
+}
+
+const temaTersimpan = localStorage.getItem('theme');
+document.documentElement.dataset.theme = temaTersimpan === 'dark' ? 'dark' : 'light';
+
+if (themeButton) {
+  themeButton.addEventListener('click', () => {
+    const temaBerikutnya = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = temaBerikutnya;
+    localStorage.setItem('theme', temaBerikutnya);
+  });
+}
+
+updateTampilan();
