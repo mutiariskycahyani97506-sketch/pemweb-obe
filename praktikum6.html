@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Data Alat</title>
+</head>
+<body>
+  <main>
+    <h1>Form Data Alat</h1>
+
+    <form id="form-alat" novalidate>
+      <div>
+        <label for="nama">Nama alat</label>
+        <input id="nama" name="nama" type="text" required minlength="3" aria-describedby="error-nama">
+        <small class="error" id="error-nama" aria-live="polite"></small>
+      </div>
+
+      <div>
+        <label for="kategori">Kategori</label>
+        <select id="kategori" name="kategori" required aria-describedby="error-kategori">
+          <option value="">Pilih kategori</option>
+          <option value="Elektronika">Elektronika</option>
+          <option value="Jaringan">Jaringan</option>
+          <option value="Peralatan">Peralatan</option>
+        </select>
+        <small class="error" id="error-kategori" aria-live="polite"></small>
+      </div>
+
+      <div>
+        <label for="jumlah">Jumlah</label>
+        <input id="jumlah" name="jumlah" type="number" required min="0" step="1" aria-describedby="error-jumlah">
+        <small class="error" id="error-jumlah" aria-live="polite"></small>
+      </div>
+
+      <div>
+        <label for="kondisi">Kondisi</label>
+        <select id="kondisi" name="kondisi" required aria-describedby="error-kondisi">
+          <option value="">Pilih kondisi</option>
+          <option value="Baik">Baik</option>
+          <option value="Perlu Cek">Perlu Cek</option>
+        </select>
+        <small class="error" id="error-kondisi" aria-live="polite"></small>
+      </div>
+
+      <div>
+        <label for="tanggal">Tanggal perolehan</label>
+        <input id="tanggal" name="tanggal" type="date" required aria-describedby="error-tanggal">
+        <small class="error" id="error-tanggal" aria-live="polite"></small>
+      </div>
+
+      <button type="submit">Periksa Data</button>
+    </form>
+    <p id="form-status" role="status" aria-live="polite"></p>
+    <section id="preview-alat" hidden aria-labelledby="judul-preview">
+      <h2 id="judul-preview">Preview Data Alat</h2>
+      <dl id="preview-alat-content"></dl>
+    </section>
+  </main>
+  <script src="js/formPraktikum6.js" defer></script>
+</body>
+</html>

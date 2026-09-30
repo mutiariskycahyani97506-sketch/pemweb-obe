@@ -1,4 +1,4 @@
-\# AI Usage Log
+# AI Usage Log
 
 
 
@@ -13,3 +13,5 @@
 | 2 September 2026 | Membantu menyusun halaman menggunakan struktur HTML5 semantik dan aksesibilitas dasar | Membantu membuat struktur `header`, `nav`, `main`, `section`, `article`, `footer`, gambar dengan `alt`, serta form dengan `label` | AI memberikan contoh struktur HTML5 dan penjelasan fungsi setiap elemen | Struktur halaman diuji melalui localhost dan seluruh elemen diperiksa langsung pada browser | Menggunakan struktur yang sesuai kebutuhan praktikum dan melakukan pengujian mandiri |
 
 | 2 September 2026 | Membantu memahami penggunaan Git branch, commit, push, dan merge | Membantu membuat branch `feature/struktur-home`, melakukan commit bertahap, push ke GitHub, dan merge ke branch `main` | AI memberikan panduan perintah Git secara bertahap | Setiap perintah dijalankan melalui terminal dan hasilnya diperiksa dari output Git | Menjalankan perintah secara bertahap dan memverifikasi keberhasilan setiap proses |
+
+| 30 September 2026 | Membantu mengembangkan dan meninjau form Modul 6 pada proyek SIRA-KONTRAK | Membuat form pengajuan sewa kamar dengan validasi HTML/JavaScript, pesan error aksesibel, ringkasan error, fokus ke field bermasalah, dan pratinjau; meninjau dan memperbaiki ringkasan error | Form interaktif, validasi, pratinjau, dan dua perbaikan dari review kode berbantuan AI | Form diuji melalui localhost pada skenario kosong dan valid; setelah perubahan ringkasan error, halaman dimuat ulang dan tautan ke field diperiksa | Menggunakan form untuk proyek SIRA-KONTRAK, meninjau hasilnya di browser, dan mencatat review AI secara transparan; belum mengklaim adanya review teman |

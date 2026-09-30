@@ -186,51 +186,74 @@
                 <div>
                     <p class="section-label">TERTARIK MENYEWA?</p>
 
-                    <h2>
-                        Hubungi Admin SIRA-KONTRAK
-                    </h2>
+                    <h2>Form Pengajuan Sewa Kamar</h2>
 
                     <p>
-                        Silakan isi formulir untuk mendapatkan
-                        informasi lebih lanjut mengenai kamar
-                        dan proses reservasi.
+                        Isi data berikut untuk mengajukan minat sewa kamar.
+                        Form ini menampilkan pratinjau dan belum mengirim data ke server.
                     </p>
                 </div>
 
+                <form id="booking-form" class="booking-form" novalidate>
+                    <div id="booking-error-summary" class="error-summary" role="alert" hidden>
+                        <p>Pengajuan belum bisa diproses. Periksa bagian berikut:</p>
+                        <ul id="booking-error-list"></ul>
+                    </div>
 
-                <form>
+                    <div class="form-field">
+                        <label for="booking-name">Nama calon penyewa <span aria-hidden="true">*</span></label>
+                        <input type="text" id="booking-name" name="nama" autocomplete="name" required minlength="3" aria-describedby="booking-name-hint error-booking-name">
+                        <small id="booking-name-hint" class="field-hint">Masukkan nama minimal 3 karakter.</small>
+                        <small id="error-booking-name" class="field-error" aria-live="polite"></small>
+                    </div>
 
-                    <label for="nama">Nama</label>
-                    <input
-                        type="text"
-                        id="nama"
-                        name="nama"
-                        placeholder="Masukkan nama Anda"
-                        required
-                    >
+                    <div class="form-field">
+                        <label for="booking-email">Email <span aria-hidden="true">*</span></label>
+                        <input type="email" id="booking-email" name="email" autocomplete="email" required aria-describedby="error-booking-email">
+                        <small id="error-booking-email" class="field-error" aria-live="polite"></small>
+                    </div>
 
-                    <label for="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Masukkan email Anda"
-                        required
-                    >
+                    <div class="form-field">
+                        <label for="booking-room">Kamar yang diminati <span aria-hidden="true">*</span></label>
+                        <select id="booking-room" name="kamar" required aria-describedby="error-booking-room">
+                            <option value="">Pilih kamar tersedia</option>
+                        </select>
+                        <small id="error-booking-room" class="field-error" aria-live="polite"></small>
+                    </div>
 
-                    <label for="pesan">Pesan</label>
-                    <textarea
-                        id="pesan"
-                        name="pesan"
-                        rows="4"
-                        placeholder="Tulis pesan atau kamar yang ingin ditanyakan"
-                        required
-                    ></textarea>
+                    <div class="form-field">
+                        <label for="booking-date">Rencana mulai sewa <span aria-hidden="true">*</span></label>
+                        <input type="date" id="booking-date" name="tanggalMulai" required aria-describedby="error-booking-date">
+                        <small id="error-booking-date" class="field-error" aria-live="polite"></small>
+                    </div>
 
-                    <button type="submit">
-                        Kirim Pesan
-                    </button>
+                    <div class="form-field">
+                        <label for="booking-duration">Durasi sewa (bulan) <span aria-hidden="true">*</span></label>
+                        <input type="number" id="booking-duration" name="durasi" min="1" max="12" step="1" required aria-describedby="booking-duration-hint error-booking-duration">
+                        <small id="booking-duration-hint" class="field-hint">Masukkan bilangan bulat antara 1 sampai 12 bulan.</small>
+                        <small id="error-booking-duration" class="field-error" aria-live="polite"></small>
+                    </div>
 
+                    <div class="form-field">
+                        <label for="booking-note">Catatan (opsional)</label>
+                        <textarea id="booking-note" name="catatan" rows="4" maxlength="200" aria-describedby="booking-note-hint error-booking-note"></textarea>
+                        <small id="booking-note-hint" class="field-hint">Maksimal 200 karakter.</small>
+                        <small id="error-booking-note" class="field-error" aria-live="polite"></small>
+                    </div>
+
+                    <div class="consent-field">
+                        <input type="checkbox" id="booking-consent" name="persetujuan" required aria-describedby="error-booking-consent">
+                        <label for="booking-consent">Saya menyatakan data pengajuan ini benar. <span aria-hidden="true">*</span></label>
+                        <small id="error-booking-consent" class="field-error" aria-live="polite"></small>
+                    </div>
+
+                    <button type="submit">Periksa Pengajuan</button>
+                    <p id="booking-status" class="form-status" role="status" aria-live="polite"></p>
+                    <section id="booking-preview" class="booking-preview" hidden aria-labelledby="booking-preview-title">
+                        <h3 id="booking-preview-title">Pratinjau Pengajuan</h3>
+                        <p>Data valid. Ini hanya pratinjau; belum dikirim ke server.</p>
+                        <dl id="booking-preview-content"></dl>
+                    </section>
                 </form>
 
             </div>
