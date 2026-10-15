@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Velvet & Co, katalog produk groceries dari REST API DummyJSON.">
+  <title>Velvet & Co | Katalog Groceries</title>
+  <link rel="stylesheet" href="css/pts-dashboard.css">
+  <script src="js/pts-dashboard.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#beranda" aria-label="Velvet & Co, katalog groceries">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h22l-2 15H7L5 12Z"/><path d="m11 12 2-7h6l2 7"/><path d="M12 18v4m8-4v4"/></svg></span>
+        <span><strong>Velvet & Co</strong><small>Groceries for everyday</small></span>
+      </a>
+      <nav aria-label="Navigasi utama">
+        <a href="#jelajah">Jelajah</a>
+        <a href="#cerita">Tentang</a>
+        <a href="#catatan">Catatan minat</a>
+      </nav>
+      <span class="student-chip">Muthiya · A1</span>
+    </div>
+  </header>
+
+  <main id="konten">
+    <section class="hero" id="beranda" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">VELVET & CO · KATALOG GROCERIES</p>
+          <h1 id="hero-title">Temukan kebutuhan harian dengan mudah.</h1>
+          <p>Jelajahi aneka produk groceries untuk kebutuhan sehari-hari. Cari produk, urutkan berdasarkan harga atau rating, lalu tinggalkan catatan minatmu.</p>
+          <a class="button button-light" href="#jelajah">Mulai menjelajah <span aria-hidden="true">↓</span></a>
+          <p class="hero-credit">Katalog produk groceries · REST API DummyJSON</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="market-sticker">
+            <span class="market-badge">
+              <svg class="market-icon" viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" role="presentation"><path d="M39 64h82l-8 64H47l-8-64Z" fill="#fff"/><path d="m58 64 7-27h30l7 27"/><circle cx="65" cy="89" r="7" fill="#ed8ca5" stroke="none"/><circle cx="92" cy="96" r="8" fill="#e8b94e" stroke="none"/><path d="M76 77c-9-16 7-23 17-17-1 11-7 17-17 17Z" fill="#8eaf83" stroke="none"/></svg>
+            </span>
+            <p class="hero-slogan">Everyday finds,<br><em>made simple.</em></p>
+            <span class="sticker-note">PILIH · SIMPAN · SELESAI</span>
+          </div>
+          <span class="photo-spark sparkle-one" aria-hidden="true">✦</span>
+          <span class="photo-spark sparkle-two" aria-hidden="true">✿</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="insights wrap" id="cerita" aria-labelledby="insight-title">
+      <div class="insight-intro"><p class="eyebrow">SEKILAS KOLEKSI</p><h2 id="insight-title">Pilihan, dalam angka.</h2><p>Ringkasan dihitung dari data produk yang berhasil dimuat.</p></div>
+      <article class="insight-card"><span class="insight-icon" aria-hidden="true">↗</span><p>Rata-rata harga</p><strong id="average-price">—</strong><small>seluruh produk dimuat</small></article>
+      <article class="insight-card"><span class="insight-icon" aria-hidden="true">✦</span><p>Kategori tersedia</p><strong id="category-count">—</strong><small>kategori unik</small></article>
+      <article class="insight-card featured-stat"><span class="insight-icon" aria-hidden="true">⌂</span><p>Harga tertinggi</p><strong id="top-price">—</strong><small id="top-product">Menunggu data produk</small></article>
+    </section>
+
+    <section class="catalog-section" id="jelajah" aria-labelledby="catalog-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div><p class="eyebrow">TEMUKAN FAVORITMU</p><h2 id="catalog-title">Jelajah produk</h2></div>
+          <p>Gunakan pencarian dan urutan untuk menemukan yang kamu cari.</p>
+        </div>
+        <div class="toolbar">
+          <div class="search-wrap"><label for="product-search">Cari produk</label><input id="product-search" type="search" placeholder="Contoh: phone, bag, skincare..." autocomplete="off"><span class="search-symbol" aria-hidden="true">⌕</span></div>
+          <div class="sort-wrap"><label for="sort-products">Urutkan</label><select id="sort-products"><option value="featured">Pilihan awal</option><option value="price-asc">Harga: rendah ke tinggi</option><option value="price-desc">Harga: tinggi ke rendah</option><option value="rating-desc">Rating tertinggi</option><option value="title-asc">Nama: A ke Z</option></select></div>
+        </div>
+        <div class="catalog-meta"><p id="results-status" role="status" aria-live="polite">Menyiapkan katalog...</p><span class="data-source">LIVE DATA <span aria-hidden="true">●</span></span></div>
+        <p class="price-note">Harga API dalam USD ditampilkan sebagai perkiraan rupiah dengan kurs simulasi US$1 = Rp16.000.</p>
+        <div id="loading-indicator" class="loading-indicator" role="status" aria-live="polite" hidden><span class="spinner" aria-hidden="true"></span><span>Memuat pilihan produk...</span></div>
+        <div id="error-panel" class="error-panel" role="alert" hidden><div><strong>Katalog belum bisa dimuat.</strong><p id="error-message">Periksa koneksi internet lalu coba lagi.</p></div><button class="button button-dark" id="retry-button" type="button">Coba lagi</button></div>
+        <div id="product-grid" class="product-grid" aria-live="polite" aria-busy="false"></div>
+      </div>
+    </section>
+
+    <section class="note-section" id="catatan" aria-labelledby="note-title">
+      <div class="wrap note-layout">
+        <div class="note-copy"><p class="eyebrow">ADA YANG MENARIK?</p><h2 id="note-title">Tinggalkan catatan minat.</h2><p>Pilih produk dan ceritakan apa yang membuatnya menarik bagimu. Catatan ini hanya ditampilkan di halaman ini.</p><div class="note-aside"><span aria-hidden="true">✳</span><p>Catatan minimal 30 karakter membantu menjelaskan kebutuhan atau kesanmu dengan lebih lengkap.</p></div></div>
+        <form id="interest-form" class="interest-form" novalidate>
+          <div class="field"><label for="visitor-name">Nama <span aria-hidden="true">*</span></label><input id="visitor-name" name="nama" type="text" autocomplete="name" required><small class="field-error" id="name-error"></small></div>
+          <div class="field"><label for="interest-product">Produk yang diminati <span aria-hidden="true">*</span></label><select id="interest-product" name="produk" required><option value="">Pilih produk</option></select><small class="field-error" id="product-error"></small></div>
+          <div class="field"><label for="interest-note">Catatan minat <span aria-hidden="true">*</span></label><textarea id="interest-note" name="catatan" rows="4" minlength="30" maxlength="500" required aria-describedby="note-hint note-error"></textarea><small class="field-hint" id="note-hint">Tulis minimal 30 karakter. <span id="note-counter">0/500</span></small><small class="field-error" id="note-error"></small></div>
+          <button class="button button-dark submit-button" type="submit">Kirim catatan <span aria-hidden="true">→</span></button>
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="wrap footer-inner"><a class="brand footer-brand" href="#beranda"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h22l-2 15H7L5 12Z"/><path d="m11 12 2-7h6l2 7"/><path d="M12 18v4m8-4v4"/></svg></span><span><strong>Velvet & Co</strong><small>groceries for everyday</small></span></a><p>Project PTS Pemrograman Web · 2026</p><p>Muthiya Riski Chahyani<br><span>2440304002 · Kelas A1 Teknik Komputer</span></p></div></footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
