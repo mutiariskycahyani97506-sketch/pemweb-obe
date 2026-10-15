@@ -74,10 +74,13 @@ Perhitungan dilakukan dalam JavaScript dengan `reduce()`, `map()`, dan `Set`. Ha
 
 ## Screenshot
 
-Tambahkan bukti screenshot dari aplikasi yang benar-benar dijalankan:
+### Tampilan desktop
 
-- **Desktop:** simpan sebagai `screenshots/desktop.png` lalu tampilkan di sini.
-- **Mobile:** simpan sebagai `screenshots/mobile.png` lalu tampilkan di sini.
+![Velvet & Co pada tampilan desktop](screenshots/desktop.png)
+
+### Tampilan mobile
+
+![Velvet & Co pada tampilan mobile](screenshots/mobile.png)
 
 ## Jawaban pertanyaan penjelasan kode
 
@@ -156,4 +159,4 @@ AI digunakan untuk brainstorming, memahami varian, membantu pengembangan tampila
 - URL repository GitHub/GitLab individual: isi setelah memeriksa link repository yang benar.
 - Tag rilis: `v0.1-PTS` setelah project siap.
 - URL video demo: isi setelah video direkam dan diunggah.
-- Screenshot desktop dan mobile: tambahkan file hasil tangkapan layar aplikasi.
+- Screenshot desktop dan mobile: tersedia di folder `screenshots/`.
