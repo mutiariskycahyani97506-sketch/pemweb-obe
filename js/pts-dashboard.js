@@ -28,7 +28,13 @@ function showLoading(isLoading, message = 'Memuat pilihan produk...') {
 }
 
 function showInsights(items) {
-  if (items.length === 0) return;
+  if (items.length === 0) {
+    document.querySelector('#average-price').textContent = '—';
+    document.querySelector('#category-count').textContent = '0 kategori';
+    document.querySelector('#top-price').textContent = '—';
+    document.querySelector('#top-product').textContent = '—';
+    return;
+  }
   const totalPrice = items.reduce((sum, item) => sum + item.price, 0);
   const categories = new Set(items.map(item => item.category));
   const mostExpensive = items.reduce((top, item) => item.price > top.price ? item : top);
@@ -113,7 +119,9 @@ function renderProducts() {
   if (visibleProducts.length === 0) {
     const empty = document.createElement('p');
     empty.className = 'empty-state';
-    empty.textContent = 'Produk tidak ditemukan. Coba kata kunci lain.';
+    empty.textContent = products.length === 0
+      ? 'Belum ada produk yang tersedia.'
+      : 'Produk tidak ditemukan. Coba kata kunci lain.';
     productGrid.append(empty);
   } else {
     const cards = visibleProducts.map(createProductCard);
