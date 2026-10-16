@@ -188,7 +188,7 @@ searchInput.addEventListener('input', event => {
   }, DEBOUNCE_DELAY);
 });
 
-clearSearchButton.addEventListener('click', () => {
+function clearSearch() {
   searchInput.value = '';
   searchTerm = '';
   clearSearchButton.hidden = true;
@@ -197,6 +197,14 @@ clearSearchButton.addEventListener('click', () => {
   renderProducts();
   showLoading(false);
   searchInput.focus();
+}
+
+clearSearchButton.addEventListener('click', clearSearch);
+searchInput.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && searchInput.value) {
+    event.preventDefault();
+    clearSearch();
+  }
 });
 
 sortSelect.addEventListener('change', renderProducts);
