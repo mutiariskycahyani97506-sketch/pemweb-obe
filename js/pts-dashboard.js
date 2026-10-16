@@ -9,6 +9,7 @@ const errorPanel = document.querySelector('#error-panel');
 const errorMessage = document.querySelector('#error-message');
 const retryButton = document.querySelector('#retry-button');
 const searchInput = document.querySelector('#product-search');
+const clearSearchButton = document.querySelector('#clear-search');
 const sortSelect = document.querySelector('#sort-products');
 const form = document.querySelector('#interest-form');
 const productSelect = document.querySelector('#interest-product');
@@ -177,6 +178,7 @@ async function loadProducts() {
 
 searchInput.addEventListener('input', event => {
   searchTerm = event.target.value;
+  clearSearchButton.hidden = searchTerm.length === 0;
   window.clearTimeout(searchTimer);
   if (isLoadingProducts) return;
   showLoading(true, 'Mencari produk...');
@@ -184,6 +186,17 @@ searchInput.addEventListener('input', event => {
     renderProducts();
     showLoading(false);
   }, DEBOUNCE_DELAY);
+});
+
+clearSearchButton.addEventListener('click', () => {
+  searchInput.value = '';
+  searchTerm = '';
+  clearSearchButton.hidden = true;
+  window.clearTimeout(searchTimer);
+  if (isLoadingProducts) return;
+  renderProducts();
+  showLoading(false);
+  searchInput.focus();
 });
 
 sortSelect.addEventListener('change', renderProducts);
