@@ -16,6 +16,7 @@ const productSelect = document.querySelector('#interest-product');
 let products = [];
 let searchTerm = '';
 let searchTimer;
+let isLoadingProducts = false;
 
 const formatRupiah = value => new Intl.NumberFormat('id-ID', {
   style: 'currency', currency: 'IDR', maximumFractionDigits: 0
@@ -132,6 +133,8 @@ function renderProducts() {
 }
 
 async function loadProducts() {
+  isLoadingProducts = true;
+  window.clearTimeout(searchTimer);
   errorPanel.hidden = true;
   retryButton.disabled = true;
   showLoading(true);
@@ -153,6 +156,7 @@ async function loadProducts() {
     errorPanel.hidden = false;
     resultsStatus.textContent = 'Data katalog gagal dimuat.';
   } finally {
+    isLoadingProducts = false;
     showLoading(false);
     retryButton.disabled = false;
   }
@@ -161,6 +165,7 @@ async function loadProducts() {
 searchInput.addEventListener('input', event => {
   searchTerm = event.target.value;
   window.clearTimeout(searchTimer);
+  if (isLoadingProducts) return;
   showLoading(true, 'Mencari produk...');
   searchTimer = window.setTimeout(() => {
     renderProducts();
