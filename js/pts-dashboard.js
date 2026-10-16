@@ -70,6 +70,19 @@ function createProductCard(item) {
   image.src = item.thumbnail;
   image.alt = item.title;
   image.loading = 'lazy';
+  image.addEventListener('error', () => {
+    const fallback = document.createElement('div');
+    fallback.className = 'image-fallback';
+    fallback.setAttribute('role', 'img');
+    fallback.setAttribute('aria-label', `Gambar ${item.title} tidak tersedia`);
+    const initial = document.createElement('span');
+    initial.setAttribute('aria-hidden', 'true');
+    initial.textContent = item.title.charAt(0).toLocaleUpperCase('id');
+    const caption = document.createElement('small');
+    caption.textContent = 'Foto tidak tersedia';
+    fallback.append(initial, caption);
+    image.replaceWith(fallback);
+  }, { once: true });
   visual.append(image);
 
   const info = document.createElement('div');
